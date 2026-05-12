@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 /*
 Dynamic Singly Linked List in C
 
@@ -13,13 +12,14 @@ Dynamic Singly Linked List in C
 - Demonstrates structs, self-referential pointers, dynamic memory allocation, traversal, and linked list management
 */
 
-typedef struct Node{
-    int data;
+typedef struct Node
+{
+    int front;
     struct Node *next;
-}Node;
+} Node;
 
-
-int main(){
+int main()
+{
 
     int nodeSize;
     Node *newNode;
@@ -27,27 +27,32 @@ int main(){
     Node *current;
 
     printf("How many nodes? ");
-    scanf("%d",&nodeSize);
+    scanf("%d", &nodeSize);
 
-    for(int i = 0; i<nodeSize; i++){
+    for (int i = 0; i < nodeSize; i++)
+    {
         newNode = malloc(sizeof(Node));
 
         printf("Enter value: ");
-        scanf("%d", &newNode->data);
+        scanf("%d", &newNode->front);
         newNode->next = NULL;
 
-        if(head==NULL){
-            head=newNode;
+        if (head == NULL)
+        {
+            head = newNode;
             current = newNode;
-        }else{
-            current->next=newNode;
-            current=newNode;
+        }
+        else
+        {
+            current->next = newNode;
+            current = newNode;
         }
     }
 
-    current=head;
-    while(current!=NULL){
-        printf("%d\t",current->data);
+    current = head;
+    while (current != NULL)
+    {
+        printf("%d\t", current->front);
         Node *temp = current;
         current = current->next;
 

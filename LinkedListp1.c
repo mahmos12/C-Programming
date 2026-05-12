@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node{
-    int data;
+typedef struct Node
+{
+    int front;
     struct Node *next;
 } Node;
 
-int main(){
+int main()
+{
 
     printf("How many nodes? ");
     int size;
@@ -15,20 +17,24 @@ int main(){
     Node *head = NULL;
     Node *current = NULL;
 
-    for(int i = 0; i < size; i++){
+    for (int i = 0; i < size; i++)
+    {
 
         Node *newNode;
         newNode = malloc(sizeof(Node));
 
         printf("Enter value: ");
-        scanf("%d", &newNode->data);
+        scanf("%d", &newNode->front);
 
         newNode->next = NULL;
 
-        if(head == NULL){
+        if (head == NULL)
+        {
             head = newNode;
             current = newNode;
-        }else{
+        }
+        else
+        {
             current->next = newNode;
             current = newNode;
         }
@@ -36,14 +42,16 @@ int main(){
 
     current = head;
 
-    while(current != NULL){
-        printf("%d\n", current->data);
+    while (current != NULL)
+    {
+        printf("%d\n", current->front);
         current = current->next;
     }
 
     current = head;
 
-    while(current != NULL){
+    while (current != NULL)
+    {
         Node *temp = current;
         current = current->next;
         free(temp);
