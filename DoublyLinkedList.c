@@ -40,6 +40,23 @@ void insertEnd(Node **head, Node **tail, int value){
     }
 }
 
+void insertBeginning(Node **head, Node **tail, int value){
+    Node *newNode;
+    newNode = malloc(sizeof(Node));
+    newNode->data=value;
+    newNode->next=NULL;
+    newNode->prev=NULL;
+
+    if(*head==NULL){
+        *head=newNode;
+        *tail = newNode;
+    }else{
+        (*head)->prev =  newNode;
+        newNode->next=*head;
+        *head=newNode;
+    }
+}
+
 void printList(Node *head){
     Node *temp;
     temp = head;
@@ -88,6 +105,7 @@ int main(){
     printf("\n");
     removeFromEnd(&head,&tail);
     printList(head);
+    //insertBeginning(&head,&tail,value);
 
     return 0;
 }
