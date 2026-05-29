@@ -27,37 +27,19 @@ void bstTraversals(Node **root, int value){
     }
 }
 
-void inorder(Node *root){
-    if(root==NULL){
-        return;
+
+
+void BinarySerach(Node *root, int value){
+    if(root==NULL){ return;}
+    if(root->data==value){
+        printf("finde : %d",root->data);
+    }else if(value < root->data){
+        BinarySerach(root->left,value);
+    }else{
+        BinarySerach(root->right,value);      
     }
-
-    inorder(root->left);
-
-    printf("%d\n",root->data);
-
-    inorder(root->right);
-
-}
-void Preorder(Node *root){
-    if(root == NULL)
-    {
-        return;
-    }
-    printf("%d\n", root->data);
-    Preorder(root->left);
-    Preorder(root->right);
 }
 
-void Postorder(Node *root){
-    if(root == NULL)
-    {
-        return;
-    }
-    Postorder(root->left);
-    Postorder(root->right);
-    printf("%d\n", root->data);
-}
 int main(){
     Node *root = NULL;
 
@@ -66,9 +48,7 @@ int main(){
     bstTraversals(&root,3);
     bstTraversals(&root,7);
     bstTraversals(&root,20);
-    inorder(root);
-    Preorder(root);
-    Postorder(root);
+    BinarySerach(root,7);
 
     return 0;
 }
